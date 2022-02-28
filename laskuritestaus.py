@@ -5,6 +5,30 @@
 #
 ################################################################################
 
+
+class Laskuri:
+
+    # Laskufunktiot
+    def addition(self, luku1, luku2 ):
+        print(f"= {luku1 + luku2}")
+        return luku1 + luku2
+
+    def substraction(self, luku1, luku2 ):
+        print(f"= {luku1 - luku2}")
+        return luku1 - luku2
+
+    def multiplication( self, luku1, luku2 ):
+        print(f'= {luku1 * luku2}')
+        return luku1 * luku2
+
+    def division( self, luku1, luku2 ):
+        if luku2 == 0:
+            print("Nollalla ei voi jakaa!")
+        else:
+            print(f'= {luku1 / luku2}')
+            return luku1 / luku2
+
+
 # Valintafuntio
 def valintakysely():
     print("\n(1) Yhteenlasku\n(2) Vähennyslasku\n(3) Kertolasku\n(4) Jakolasku\n(5) Lopetus\n")
@@ -23,6 +47,7 @@ def valintakysely():
     except ValueError:
         print("\nAnna numero väliltä 1-5!\n")
 
+
 # Lukujenkyselyfunktio
 def lukukysely():
     while True:
@@ -32,25 +57,6 @@ def lukukysely():
         except ValueError:
             continue
 
-# Laskufunktiot
-def addition(luku1, luku2):
-    print(f"= {luku1 + luku2}")
-    return luku1 + luku2
-
-def substraction(luku1, luku2):
-    print(f"= {luku1 - luku2}")
-    return luku1 - luku2
-
-def multiplication(luku1, luku2):
-    print(f'= {luku1 * luku2}')
-    return luku1 * luku2
-
-def division(luku1, luku2):
-    if luku2 == 0:
-        print("Nollalla ei voi jakaa!")
-    else:
-        print(f'= {luku1 / luku2}')
-        return luku1 / luku2
 
 # Pääohjelma
 def main():
@@ -61,6 +67,8 @@ def main():
     print("*******************************\n")
     tulos = lukukysely()
     laskuStringi = str(tulos)
+
+    laskuri = Laskuri()
     
     while True:
 
@@ -72,21 +80,21 @@ def main():
             luku = lukukysely()
             laskuStringi += str(luku)
             print(laskuStringi)
-            tulos = addition(tulos, luku)     
+            tulos = laskuri.addition(tulos, luku)
         elif valinta == "-":
             laskuStringi += " " + valinta + " "
             print(laskuStringi)
             luku = lukukysely()
             laskuStringi += str(luku)
             print(laskuStringi)
-            tulos = substraction(tulos, luku)
+            tulos = laskuri.substraction(tulos, luku)
         elif valinta == "*":
             laskuStringi += " " + valinta + " "
             print(laskuStringi)
             luku = lukukysely()
             laskuStringi += str(luku)
             print(laskuStringi)
-            tulos = multiplication(tulos, luku)
+            tulos = laskuri.multiplication(tulos, luku)
         elif valinta == "/":
             laskuStringi += " " + valinta + " "
             print(laskuStringi)
@@ -94,7 +102,7 @@ def main():
             if luku != 0:
                 laskuStringi += str(luku)
                 print(laskuStringi)
-                tulos = division(tulos, luku)
+                tulos = laskuri.division(tulos, luku)
             else:
                 print("Nollalla ei voi jakaa!\n")
                 laskuStringi = laskuStringi.replace("/", "")
